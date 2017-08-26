@@ -11,15 +11,18 @@ import QuartzCore
 import SceneKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, OverlaySceneDelegate {
 
-//    var positionX: UISlider!
+    var shipSlider: UISlider!
 //    var positionY: UISlider!
 //    var positionZ: UISlider!
     
     var scene: SCNScene!
     var ship: SCNNode!
-    var overlayScene: SKScene!
+    var overlayScene: SkOverlay!
+    var selectedProperty: SKLabelNode!
+    
+//    var positionXValue: Int!
     
     
     
@@ -53,65 +56,56 @@ class GameViewController: UIViewController {
         
         // retrieve the ship node
         ship = scene.rootNode.childNode(withName: "ship", recursively: true)!
+
+        
+        
         
         let scnView = self.view as! SCNView
- 
-//        positionX = UISlider(frame: CGRect(x: 50, y: 80, width: 150, height: 20))
-//        positionX.minimumValue = -50
-//        positionX.maximumValue = 50
-//        positionX.isContinuous = true
-//        positionX.addTarget(self, action: #selector(positionXValueChange(_:)) , for: .valueChanged)
-//        scnView.addSubview(positionX)
+
+    
         
-//        positionY = UISlider(frame: CGRect(x: 50, y: 120, width: 150, height: 20))
-//        positionY.minimumValue = -50
-//        positionY.maximumValue = 50
-//        positionY.isContinuous = true
-//        positionY.addTarget(self, action: #selector(positionYValueChange(_:)), for: .valueChanged)
-//        scnView.addSubview(positionY)
-//
-//        positionZ = UISlider(frame: CGRect(x: 50, y: 160, width: 150, height: 20))
-//        positionZ.minimumValue = -50
-//        positionZ.maximumValue = 50
-//        positionZ.isContinuous = true
-//        positionZ.addTarget(self, action: #selector(positionZValueChange(_:)), for: .valueChanged)
-//        scnView.addSubview(positionZ)
-        
-        
-        
-   
         
         // set the scene to the view
         scnView.scene = scene
-        
-        // allows the user to manipulate the camera
-        //        scnView.allowsCameraControl = false
-        
+
+
         // configure the view
         scnView.backgroundColor = UIColor.white
      
-//        print(ship.position)
         
-//        // add a tap gesture recognizer
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-//        scnView.addGestureRecognizer(tapGesture)
     
-        overlayScene = SKScene(fileNamed: "skOverlay.sks")
+       overlayScene = SKScene(fileNamed: "skOverlay.sks") as! SkOverlay
+//       overlayScene = SkOverlay(size: view.bounds.size)
+        overlayScene.overlayDelegate = self
+      
+
+        
         scnView.overlaySKScene = overlayScene
-    
         
+        shipSlider = UISlider(frame: CGRect(x: 50, y: 80, width: 150, height: 20))
+        shipSlider.minimumValue = -50
+        shipSlider.maximumValue = 50
+        shipSlider.isContinuous = true
+        shipSlider.addTarget(self, action: #selector(shipSliderValueChange(_:)) , for: .valueChanged)
+        scnView.addSubview(shipSlider)
+        
+        
+    }
     
+    func variableSelect(label: SKLabelNode) {
+        selectedProperty = label
+        print(selectedProperty.description)
+    }
     
-    
-    
-    
-    
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        print(touches)
+//        print("touch began")
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        print(touches)
+//        print(touches)
+//        print("touches moved")
+//        print(touches)
 //            let previousValue = touches.first!.previousLocation(in: self.view)
 //            let currentValue = touches.first!.location(in: self.view)
 //            let difference = Float(currentValue.x) - Float(previousValue.x)
@@ -121,22 +115,41 @@ class GameViewController: UIViewController {
 //
     }
     
-//    @objc func positionXValueChange(_ sender: UISlider!) {
-//        print(positionX.value)
-//        ship.position.x = positionX.value
-//        
-//    }
-//    
-//    @objc func positionYValueChange(_ sender: UISlider!) {
-//        ship.position.y = positionY.value
-//    }
-//    
-//    @objc func positionZValueChange(_ sender: UISlider!) {
-//        ship.position.z = positionZ.value
-//    }
-//    
+    @objc func shipSliderValueChange(_ sender: UISlider!) {
+     
+        let name = selectedProperty.name!
+        
+        switch name {
+        case "positionXLabel":
+            ship.position.x = sender.value
+            upDateOverlay()
+        case "positionYLabel":
+            ship.position.y = sender.value
+            upDateOverlay()
+        case "positionZLabel":
+            ship.position.z = sender.value
+            upDateOverlay()
+        default:
+            ship.position.x = sender.value
+            upDateOverlay()
+        }
 
+    }
     
+    func upDateOverlay() {
+        
+        overlayScene.positionXValue = ship.position.x
+        overlayScene.positionYValue = ship.position.y
+        overlayScene.positionZValue = ship.position.z
+        
+        
+        overlayScene.positionXValueLabel.text = String(overlayScene.positionXValue)
+        overlayScene.positionYValueLabel.text = String(overlayScene.positionYValue)
+        overlayScene.positionZValueLabel.text = String(overlayScene.positionZValue)
+
+    }
+    
+
     override var shouldAutorotate: Bool {
         return true
     }
@@ -159,3 +172,8 @@ class GameViewController: UIViewController {
     }
 
 }
+
+
+
+
+
