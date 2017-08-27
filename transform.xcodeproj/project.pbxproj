@@ -15,8 +15,6 @@
 		FEE51DBB1F4F17A1002EA0CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEE51DB91F4F17A1002EA0CC /* LaunchScreen.storyboard */; };
 		FEE51DC31F4F60F0002EA0CC /* skOverlay.sks in Resources */ = {isa = PBXBuildFile; fileRef = FEE51DC21F4F60F0002EA0CC /* skOverlay.sks */; };
 		FEE51DC51F4F8C73002EA0CC /* SkOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE51DC41F4F8C73002EA0CC /* SkOverlay.swift */; };
-		FEE8D4711F506C0C00442226 /* Sliders.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEE8D4701F506C0C00442226 /* Sliders.xib */; };
-		FEE8D4731F50780800442226 /* SliderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE8D4721F50780800442226 /* SliderControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +28,6 @@
 		FEE51DBC1F4F17A1002EA0CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEE51DC21F4F60F0002EA0CC /* skOverlay.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = skOverlay.sks; sourceTree = "<group>"; };
 		FEE51DC41F4F8C73002EA0CC /* SkOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkOverlay.swift; sourceTree = "<group>"; };
-		FEE8D4701F506C0C00442226 /* Sliders.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sliders.xib; sourceTree = "<group>"; };
-		FEE8D4721F50780800442226 /* SliderControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +69,6 @@
 				FEE51DBC1F4F17A1002EA0CC /* Info.plist */,
 				FEE51DC21F4F60F0002EA0CC /* skOverlay.sks */,
 				FEE51DC41F4F8C73002EA0CC /* SkOverlay.swift */,
-				FEE8D4701F506C0C00442226 /* Sliders.xib */,
-				FEE8D4721F50780800442226 /* SliderControl.swift */,
 			);
 			path = transform;
 			sourceTree = "<group>";
@@ -141,7 +135,6 @@
 				FEE51DB11F4F17A1002EA0CC /* art.scnassets in Resources */,
 				FEE51DC31F4F60F0002EA0CC /* skOverlay.sks in Resources */,
 				FEE51DBB1F4F17A1002EA0CC /* LaunchScreen.storyboard in Resources */,
-				FEE8D4711F506C0C00442226 /* Sliders.xib in Resources */,
 				FEE51DB81F4F17A1002EA0CC /* Assets.xcassets in Resources */,
 				FEE51DB61F4F17A1002EA0CC /* Main.storyboard in Resources */,
 			);
@@ -156,7 +149,6 @@
 			files = (
 				FEE51DB31F4F17A1002EA0CC /* GameViewController.swift in Sources */,
 				FEE51DC51F4F8C73002EA0CC /* SkOverlay.swift in Sources */,
-				FEE8D4731F50780800442226 /* SliderControl.swift in Sources */,
 				FEE51DAF1F4F17A1002EA0CC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

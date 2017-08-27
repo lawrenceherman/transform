@@ -129,6 +129,9 @@ class GameViewController: UIViewController, OverlaySceneDelegate {
         case "positionZLabel":
             ship.position.z = sender.value
             upDateOverlay()
+        case "testX":
+            ship.position.x = sender.value
+            upDateOverlay()
         default:
             ship.position.x = sender.value
             upDateOverlay()
@@ -141,11 +144,28 @@ class GameViewController: UIViewController, OverlaySceneDelegate {
         overlayScene.positionXValue = ship.position.x
         overlayScene.positionYValue = ship.position.y
         overlayScene.positionZValue = ship.position.z
+//        overlayScene.testX.text = ".x    \(overlayScene.positionXValue!)"
+        
+        overlayScene.eulerXValue = ship.eulerAngles.x
+        overlayScene.eulerYValue = ship.eulerAngles.y
+        overlayScene.eulerYValue = ship.eulerAngles.z
+        
+        overlayScene.scaleXValue = ship.scale.x
+        overlayScene.scaleYValue = ship.scale.y
+        overlayScene.scaleZValue = ship.scale.z
+        
+        overlayScene.orientationWValue = ship.orientation.w
+        overlayScene.orientationXValue = ship.orientation.x
+        overlayScene.orientationYValue = ship.orientation.y
+        overlayScene.orientationZValue = ship.orientation.z
         
         
-        overlayScene.positionXValueLabel.text = String(overlayScene.positionXValue)
-        overlayScene.positionYValueLabel.text = String(overlayScene.positionYValue)
-        overlayScene.positionZValueLabel.text = String(overlayScene.positionZValue)
+        
+        
+        
+        overlayScene.positionXValueLabel.text = String(describing: overlayScene.positionXValue)
+        overlayScene.positionYValueLabel.text = String(describing: overlayScene.positionYValue)
+        overlayScene.positionZValueLabel.text = String(describing: overlayScene.positionZValue)
 
     }
     
