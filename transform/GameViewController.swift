@@ -89,31 +89,48 @@ class GameViewController: UIViewController, OverlaySceneDelegate {
         shipSlider.addTarget(self, action: #selector(shipSliderValueChange(_:)) , for: .valueChanged)
         scnView.addSubview(shipSlider)
         
+        upDateOverlay()
+        
         
     }
     
+    func sliderValues(label: SKLabelNode) {
+        
+        let name = label.name
+
+        if name == "positionXLabel" || name == "positionYLabel" || name == "positionZLabel" {
+            shipSlider.minimumValue = -50
+            shipSlider.maximumValue = 50
+        }
+        
+        if name == "eulerXLabel" || name == "eulerYLabel" || name == "eulerZLabel" {
+            shipSlider.minimumValue = 0
+            shipSlider.maximumValue =  2 * .pi
+        }
+        
+        if name == "scaleXLabel" || name == "scaleYLabel" || name == "scaleZLabel" {
+            shipSlider.minimumValue = 0
+            shipSlider.maximumValue = 3
+        }
+     
+        
+        
+        
+        
+        
+        
+    }
+    
+    
     func variableSelect(label: SKLabelNode) {
         selectedProperty = label
-        print(selectedProperty.description)
+    
+        sliderValues(label: label)
+    
+    
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        print(touches)
-//        print("touch began")
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        print(touches)
-//        print("touches moved")
-//        print(touches)
-//            let previousValue = touches.first!.previousLocation(in: self.view)
-//            let currentValue = touches.first!.location(in: self.view)
-//            let difference = Float(currentValue.x) - Float(previousValue.x)
-//            var eulerVector = gameScene.cameraNode.eulerAngles
-//            eulerVector.y = eulerVector.y + (difference/100)
-//            gameScene.cameraNode.eulerAngles = eulerVector
-//
-    }
+
     
     @objc func shipSliderValueChange(_ sender: UISlider!) {
      
@@ -129,11 +146,98 @@ class GameViewController: UIViewController, OverlaySceneDelegate {
         case "positionZLabel":
             ship.position.z = sender.value
             upDateOverlay()
-        case "testX":
-            ship.position.x = sender.value
+        case "eulerXLabel":
+            ship.eulerAngles.x = sender.value
+            upDateOverlay()
+        case "eulerYLabel":
+            ship.eulerAngles.y = sender.value
+            upDateOverlay()
+        case "eulerZLabel":
+            ship.eulerAngles.z = sender.value
+            upDateOverlay()
+        case "scaleXLabel":
+            ship.scale.x = sender.value
+            upDateOverlay()
+        case "scaleYLabel":
+            ship.scale.y = sender.value
+            upDateOverlay()
+        case "scaleZLabel":
+            ship.scale.z = sender.value
+            upDateOverlay()
+        case "orientationWLabel":
+            ship.orientation.w = sender.value
+            upDateOverlay()
+        case "orientationXLabel":
+            ship.orientation.x = sender.value
+            upDateOverlay()
+        case "orientationYLabel":
+            ship.orientation.y = sender.value
+            upDateOverlay()
+        case "orientationZLabel":
+            ship.orientation.z = sender.value
+            upDateOverlay()
+        case "rotationWLabel":
+            ship.rotation.w = sender.value
+            upDateOverlay()
+        case "rotationXLabel":
+            ship.rotation.x = sender.value
+            upDateOverlay()
+        case "rotationYLabel":
+            ship.rotation.y = sender.value
+            upDateOverlay()
+        case "rotationZLabel":
+            ship.rotation.z = sender.value
+            upDateOverlay()
+        case "pivot11Label":
+            ship.pivot.m11 = sender.value
+            upDateOverlay()
+        case "pivot12Label":
+            ship.pivot.m12 = sender.value
+            upDateOverlay()
+        case "pivot13Label":
+            ship.pivot.m13 = sender.value
+            upDateOverlay()
+        case "pivot14Label":
+            ship.pivot.m14 = sender.value
+            upDateOverlay()
+        case "pivot21Label":
+            ship.pivot.m21 = sender.value
+            upDateOverlay()
+        case "pivot22Label":
+            ship.pivot.m22 = sender.value
+            upDateOverlay()
+        case "pivot23Label":
+            ship.pivot.m23 = sender.value
+            upDateOverlay()
+        case "pivot24Label":
+            ship.pivot.m24 = sender.value
+            upDateOverlay()
+        case "pivot31Label":
+            ship.pivot.m31 = sender.value
+            upDateOverlay()
+        case "pivot32Label":
+            ship.pivot.m32 = sender.value
+            upDateOverlay()
+        case "pivot33Label":
+            ship.pivot.m33 = sender.value
+            upDateOverlay()
+        case "pivot34Label":
+            ship.pivot.m34 = sender.value
+            upDateOverlay()
+        case "pivot41Label":
+            ship.pivot.m41 = sender.value
+            upDateOverlay()
+        case "pivot42Label":
+            ship.pivot.m42 = sender.value
+            upDateOverlay()
+        case "pivot43Label":
+            ship.pivot.m43 = sender.value
+            upDateOverlay()
+        case "pivot44Label":
+            ship.pivot.m44 = sender.value
             upDateOverlay()
         default:
-            ship.position.x = sender.value
+            print("default slider")
             upDateOverlay()
         }
 
@@ -144,11 +248,10 @@ class GameViewController: UIViewController, OverlaySceneDelegate {
         overlayScene.positionXValue = ship.position.x
         overlayScene.positionYValue = ship.position.y
         overlayScene.positionZValue = ship.position.z
-//        overlayScene.testX.text = ".x    \(overlayScene.positionXValue!)"
         
         overlayScene.eulerXValue = ship.eulerAngles.x
         overlayScene.eulerYValue = ship.eulerAngles.y
-        overlayScene.eulerYValue = ship.eulerAngles.z
+        overlayScene.eulerZValue = ship.eulerAngles.z
         
         overlayScene.scaleXValue = ship.scale.x
         overlayScene.scaleYValue = ship.scale.y
@@ -159,13 +262,33 @@ class GameViewController: UIViewController, OverlaySceneDelegate {
         overlayScene.orientationYValue = ship.orientation.y
         overlayScene.orientationZValue = ship.orientation.z
         
+        overlayScene.rotationWValue = ship.rotation.w
+        overlayScene.rotationXValue = ship.rotation.x
+        overlayScene.rotationYValue = ship.rotation.y
+        overlayScene.rotationZValue = ship.rotation.z
+        
+        overlayScene.pivot11Value = ship.pivot.m11
+        overlayScene.pivot12Value = ship.pivot.m12
+        overlayScene.pivot13Value = ship.pivot.m13
+        overlayScene.pivot14Value = ship.pivot.m14
+        
+        overlayScene.pivot21Value = ship.pivot.m21
+        overlayScene.pivot22Value = ship.pivot.m22
+        overlayScene.pivot23Value = ship.pivot.m23
+        overlayScene.pivot24Value = ship.pivot.m24
+        
+        overlayScene.pivot31Value = ship.pivot.m31
+        overlayScene.pivot32Value = ship.pivot.m32
+        overlayScene.pivot33Value = ship.pivot.m33
+        overlayScene.pivot34Value = ship.pivot.m34
+        
+        overlayScene.pivot41Value = ship.pivot.m41
+        overlayScene.pivot42Value = ship.pivot.m42
+        overlayScene.pivot43Value = ship.pivot.m43
+        overlayScene.pivot44Value = ship.pivot.m44
         
         
         
-        
-        overlayScene.positionXValueLabel.text = String(describing: overlayScene.positionXValue)
-        overlayScene.positionYValueLabel.text = String(describing: overlayScene.positionYValue)
-        overlayScene.positionZValueLabel.text = String(describing: overlayScene.positionZValue)
 
     }
     
