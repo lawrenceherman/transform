@@ -82,7 +82,11 @@ class GameViewController: UIViewController, OverlaySceneDelegate {
         
         scnView.overlaySKScene = overlayScene
         
-        shipSlider = UISlider(frame: CGRect(x: 50, y: 80, width: 150, height: 20))
+        
+        
+        
+        shipSlider = UISlider(frame: CGRect(x: 50, y: 80, width: 400, height: 20))
+        shipSlider.translatesAutoresizingMaskIntoConstraints = false
         shipSlider.minimumValue = -50
         shipSlider.maximumValue = 50
         shipSlider.isContinuous = true
@@ -91,6 +95,11 @@ class GameViewController: UIViewController, OverlaySceneDelegate {
         
         upDateOverlay()
         
+        shipSlider.leadingAnchor.constraint(equalTo: scnView.leadingAnchor, constant: 50).isActive = true
+        
+        shipSlider.bottomAnchor.constraint(equalTo: scnView.bottomAnchor).isActive = true
+        
+        shipSlider.trailingAnchor.constraint(equalTo: scnView.trailingAnchor, constant: -50.0).isActive = true
         
     }
     
@@ -236,6 +245,56 @@ class GameViewController: UIViewController, OverlaySceneDelegate {
         case "pivot44Label":
             ship.pivot.m44 = sender.value
             upDateOverlay()
+        case "transform11Label":
+            ship.transform.m11 = sender.value
+            upDateOverlay()
+        case "transform12Label":
+            ship.transform.m12 = sender.value
+            upDateOverlay()
+        case "transform13Label":
+            ship.transform.m13 = sender.value
+            upDateOverlay()
+        case "transform14Label":
+            ship.transform.m14 = sender.value
+            upDateOverlay()
+        case "transform21Label":
+            ship.transform.m21 = sender.value
+            upDateOverlay()
+        case "transform22Label":
+            ship.transform.m22 = sender.value
+            upDateOverlay()
+        case "transform23Label":
+            ship.transform.m23 = sender.value
+            upDateOverlay()
+        case "transform24Label":
+            ship.transform.m24 = sender.value
+            upDateOverlay()
+        case "transform31Label":
+            ship.transform.m31 = sender.value
+            upDateOverlay()
+        case "transform32Label":
+            ship.transform.m32 = sender.value
+            upDateOverlay()
+        case "transform33Label":
+            ship.transform.m33 = sender.value
+            upDateOverlay()
+        case "transform34Label":
+            ship.transform.m34 = sender.value
+            upDateOverlay()
+        case "transform41Label":
+            ship.transform.m41 = sender.value
+            upDateOverlay()
+        case "transform42Label":
+            ship.transform.m42 = sender.value
+            upDateOverlay()
+        case "transform43Label":
+            ship.transform.m43 = sender.value
+            upDateOverlay()
+        case "transform44Label":
+            ship.transform.m44 = sender.value
+            upDateOverlay()
+        
+            
         default:
             print("default slider")
             upDateOverlay()
@@ -286,6 +345,26 @@ class GameViewController: UIViewController, OverlaySceneDelegate {
         overlayScene.pivot42Value = ship.pivot.m42
         overlayScene.pivot43Value = ship.pivot.m43
         overlayScene.pivot44Value = ship.pivot.m44
+        
+        overlayScene.transform11Value = ship.transform.m11
+        overlayScene.transform12Value = ship.transform.m12
+        overlayScene.transform13Value = ship.transform.m13
+        overlayScene.transform14Value = ship.transform.m14
+        
+        overlayScene.transform21Value = ship.transform.m21
+        overlayScene.transform22Value = ship.transform.m22
+        overlayScene.transform23Value = ship.transform.m23
+        overlayScene.transform24Value = ship.transform.m24
+        
+        overlayScene.transform31Value = ship.transform.m31
+        overlayScene.transform32Value = ship.transform.m32
+        overlayScene.transform33Value = ship.transform.m33
+        overlayScene.transform34Value = ship.transform.m34
+        
+        overlayScene.transform41Value = ship.transform.m41
+        overlayScene.transform42Value = ship.transform.m42
+        overlayScene.transform43Value = ship.transform.m43
+        overlayScene.transform44Value = ship.transform.m44
         
         
         

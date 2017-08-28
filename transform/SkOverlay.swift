@@ -17,7 +17,7 @@ protocol OverlaySceneDelegate: class {
 class SkOverlay: SKScene {
     
 //    var positionTitle: SKLabelNode!
-    var positionXLabel, positionYLabel, positionZLabel, eulerXLabel, eulerYLabel, eulerZLabel, scaleXLabel, scaleYLabel, scaleZLabel, orientationWLabel, orientationXLabel, orientationYLabel, orientationZLabel, rotationWLabel, rotationXLabel, rotationYLabel, rotationZLabel, pivot11Label, pivot12Label, pivot13Label, pivot14Label, pivot21Label, pivot22Label, pivot23Label, pivot24Label, pivot31Label, pivot32Label, pivot33Label, pivot34Label, pivot41Label, pivot42Label, pivot43Label, pivot44Label: SKLabelNode!
+    var positionXLabel, positionYLabel, positionZLabel, eulerXLabel, eulerYLabel, eulerZLabel, scaleXLabel, scaleYLabel, scaleZLabel, orientationWLabel, orientationXLabel, orientationYLabel, orientationZLabel, rotationWLabel, rotationXLabel, rotationYLabel, rotationZLabel, pivot11Label, pivot12Label, pivot13Label, pivot14Label, pivot21Label, pivot22Label, pivot23Label, pivot24Label, pivot31Label, pivot32Label, pivot33Label, pivot34Label, pivot41Label, pivot42Label, pivot43Label, pivot44Label, transform11Label, transform12Label, transform13Label, transform14Label, transform21Label, transform22Label, transform23Label, transform24Label, transform31Label, transform32Label,transform33Label, transform34Label, transform41Label, transform42Label, transform43Label, transform44Label: SKLabelNode!
     
     
 //
@@ -260,7 +260,8 @@ class SkOverlay: SKScene {
             case 6:
                 rotationWLabel.text = ".w  " + value
             default:
-                rotationWLabel.text = "error"
+                rotationWLabel.text = ".w    " + value
+
             }
         }
     }
@@ -570,6 +571,265 @@ class SkOverlay: SKScene {
     }
     
     
+    //////////// transform values
+    
+    var transform11Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform11Value)
+            switch value.count {
+            case 4:
+                transform11Label.text = ".m11    " + value
+            case 5:
+                transform11Label.text = ".m11   " + value
+            case 6:
+                transform11Label.text = ".m11 " + value
+            default:
+                transform11Label.text = ".m11    " + value
+            }
+        }
+    }
+    
+    var transform12Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform12Value)
+            switch value.count {
+            case 4:
+                transform12Label.text = ".m12    " + value
+            case 5:
+                transform12Label.text = ".m12   " + value
+            case 6:
+                transform12Label.text = ".m12 " + value
+            default:
+                transform12Label.text = ".m12    " + value
+            }
+        }
+    }
+    
+    var transform13Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform13Value)
+            switch value.count {
+            case 4:
+                transform13Label.text = ".m13    " + value
+            case 5:
+                transform13Label.text = ".m13   " + value
+            case 6:
+                transform13Label.text = ".m13 " + value
+            default:
+                transform13Label.text = ".m13   " + value
+            }
+        }
+    }
+    
+    var transform14Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform14Value)
+            switch value.count {
+            case 4:
+                transform14Label.text = ".m14    " + value
+            case 5:
+                transform14Label.text = ".m14   " + value
+            case 6:
+                transform14Label.text = ".m14 " + value
+            default:
+                transform14Label.text = ".m14    " + value
+            }
+        }
+    }
+    
+    var transform21Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform21Value)
+            switch value.count {
+            case 4:
+                transform21Label.text = ".m21    " + value
+            case 5:
+                transform21Label.text = ".m21   " + value
+            case 6:
+                transform21Label.text = ".m21 " + value
+            default:
+                transform21Label.text = ".m21   " + value
+            }
+        }
+    }
+    
+    var transform22Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform22Value)
+            switch value.count {
+            case 4:
+                transform22Label.text = ".m22    " + value
+            case 5:
+                transform22Label.text = ".m22   " + value
+            case 6:
+                transform22Label.text = ".m22 " + value
+            default:
+                transform22Label.text = ".m22    " + value
+            }
+        }
+    }
+    
+    var transform23Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform23Value)
+            switch value.count {
+            case 4:
+                transform23Label.text = ".m23    " + value
+            case 5:
+                transform23Label.text = ".m23   " + value
+            case 6:
+                transform23Label.text = ".m23 " + value
+            default:
+                transform23Label.text = ".m23   " + value
+            }
+        }
+    }
+    
+    var transform24Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform24Value)
+            switch value.count {
+            case 4:
+                transform24Label.text = ".m24    " + value
+            case 5:
+                transform24Label.text = ".m24   " + value
+            case 6:
+                transform24Label.text = ".m24 " + value
+            default:
+                transform24Label.text = ".m24    " + value
+            }
+        }
+    }
+    
+    var transform31Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform31Value)
+            switch value.count {
+            case 4:
+                transform31Label.text = ".m31    " + value
+            case 5:
+                transform31Label.text = ".m31   " + value
+            case 6:
+                transform31Label.text = ".m31 " + value
+            default:
+                transform31Label.text = ".m31    " + value
+            }
+        }
+    }
+    
+    var transform32Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform32Value)
+            switch value.count {
+            case 4:
+                transform32Label.text = ".m32    " + value
+            case 5:
+                transform32Label.text = ".m32   " + value
+            case 6:
+                transform32Label.text = ".m32 " + value
+            default:
+                transform32Label.text = ".m32    " + value
+            }
+        }
+    }
+    
+    var transform33Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform33Value)
+            switch value.count {
+            case 4:
+                transform33Label.text = ".m33    " + value
+            case 5:
+                transform33Label.text = ".m33   " + value
+            case 6:
+                transform33Label.text = ".m33 " + value
+            default:
+                transform33Label.text = ".m33   " + value
+            }
+        }
+    }
+    
+    var transform34Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform34Value)
+            switch value.count {
+            case 4:
+                transform34Label.text = ".m34    " + value
+            case 5:
+                transform34Label.text = ".m34   " + value
+            case 6:
+                transform34Label.text = ".m34 " + value
+            default:
+                transform34Label.text = ".m34    " + value
+            }
+        }
+    }
+    
+    var transform41Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform41Value)
+            switch value.count {
+            case 4:
+                transform41Label.text = ".m41    " + value
+            case 5:
+                transform41Label.text = ".m41   " + value
+            case 6:
+                transform41Label.text = ".m41 " + value
+            default:
+                transform41Label.text = ".m41    " + value
+            }
+        }
+    }
+    
+    var transform42Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform42Value)
+            switch value.count {
+            case 4:
+                transform42Label.text = ".m42    " + value
+            case 5:
+                transform42Label.text = ".m42   " + value
+            case 6:
+                transform42Label.text = ".m42 " + value
+            default:
+                transform42Label.text = ".m42    " + value
+            }
+        }
+    }
+    
+    var transform43Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform43Value)
+            switch value.count {
+            case 4:
+                transform43Label.text = ".m43    " + value
+            case 5:
+                transform43Label.text = ".m43   " + value
+            case 6:
+                transform43Label.text = ".m43 " + value
+            default:
+                transform43Label.text = ".m43   " + value
+            }
+        }
+    }
+    
+    var transform44Value: Float!{
+        didSet {
+            let value = String.init(format: "%.2f", transform44Value)
+            switch value.count {
+            case 4:
+                transform44Label.text = ".m44    " + value
+            case 5:
+                transform44Label.text = ".m44   " + value
+            case 6:
+                transform44Label.text = ".m44 " + value
+            default:
+                transform44Label.text = ".m44    " + value
+            }
+        }
+    }
+    
+    
     
     
     
@@ -622,6 +882,25 @@ class SkOverlay: SKScene {
         pivot43Label = self.childNode(withName: "pivot43Label") as! SKLabelNode
         pivot44Label = self.childNode(withName: "pivot44Label") as! SKLabelNode
         
+        transform11Label = self.childNode(withName: "transform11Label") as! SKLabelNode
+        transform12Label = self.childNode(withName: "transform12Label") as! SKLabelNode
+        transform13Label = self.childNode(withName: "transform13Label") as! SKLabelNode
+        transform14Label = self.childNode(withName: "transform14Label") as! SKLabelNode
+        
+        transform21Label = self.childNode(withName: "transform21Label") as! SKLabelNode
+        transform22Label = self.childNode(withName: "transform22Label") as! SKLabelNode
+        transform23Label = self.childNode(withName: "transform23Label") as! SKLabelNode
+        transform24Label = self.childNode(withName: "transform24Label") as! SKLabelNode
+        
+        transform31Label = self.childNode(withName: "transform31Label") as! SKLabelNode
+        transform32Label = self.childNode(withName: "transform32Label") as! SKLabelNode
+        transform33Label = self.childNode(withName: "transform33Label") as! SKLabelNode
+        transform34Label = self.childNode(withName: "transform34Label") as! SKLabelNode
+        
+        transform41Label = self.childNode(withName: "transform41Label") as! SKLabelNode
+        transform42Label = self.childNode(withName: "transform42Label") as! SKLabelNode
+        transform43Label = self.childNode(withName: "transform43Label") as! SKLabelNode
+        transform44Label = self.childNode(withName: "transform44Label") as! SKLabelNode
         
     }
     
@@ -726,6 +1005,38 @@ class SkOverlay: SKScene {
             overlayDelegate?.variableSelect(label: pivot43Label)
         case _ where pivot44Label.contains(location!):
             overlayDelegate?.variableSelect(label: pivot44Label)
+        case _ where transform11Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform11Label)
+        case _ where transform12Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform12Label)
+        case _ where transform13Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform13Label)
+        case _ where transform14Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform14Label)
+        case _ where transform21Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform21Label)
+        case _ where transform22Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform22Label)
+        case _ where transform23Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform23Label)
+        case _ where transform24Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform24Label)
+        case _ where transform31Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform31Label)
+        case _ where transform32Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform32Label)
+        case _ where transform33Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform33Label)
+        case _ where transform34Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform34Label)
+        case _ where transform41Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform41Label)
+        case _ where transform42Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform42Label)
+        case _ where transform43Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform43Label)
+        case _ where transform44Label.contains(location!):
+            overlayDelegate?.variableSelect(label: transform44Label)
 
         default:
             print("default touch")
